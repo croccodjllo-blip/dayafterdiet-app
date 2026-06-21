@@ -6,6 +6,8 @@ const www = path.join(root, "www");
 
 const STATIC_FILES = [
   "app.js",
+  "ads.js",
+  "ads-config.js",
   "catalog-i18n.js",
   "i18n.js",
   "users-db.js",

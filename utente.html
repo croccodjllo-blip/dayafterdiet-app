@@ -224,6 +224,85 @@
           </form>
         </section>
 
+        <section class="user-page-card" id="user-ads-section" aria-labelledby="user-ads-title">
+          <div class="user-section-head">
+            <h2 class="user-section-title" id="user-ads-title" data-i18n="ads.title">Banner pubblicitari</h2>
+            <p class="user-section-desc" data-i18n="ads.desc">Inserisci banner in alto o in basso nelle pagine dell'app.</p>
+          </div>
+
+          <form id="ads-settings-form" class="user-form">
+            <div class="field field-checkbox">
+              <label class="checkbox-label">
+                <input type="checkbox" id="ads-enabled" />
+                <span data-i18n="ads.enabled">Mostra banner pubblicitari</span>
+              </label>
+            </div>
+
+            <fieldset class="ads-fieldset">
+              <legend data-i18n="ads.topTitle">Banner in alto (sotto l'header)</legend>
+              <div class="field field-checkbox">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="ads-top-enabled" />
+                  <span data-i18n="ads.topEnabled">Attiva banner in alto</span>
+                </label>
+              </div>
+              <div class="field">
+                <label for="ads-top-image" data-i18n="ads.imageUrl">URL immagine banner</label>
+                <input type="url" id="ads-top-image" inputmode="url" placeholder="https://..." />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="ads-top-href" data-i18n="ads.linkUrl">URL di destinazione (click)</label>
+                  <input type="url" id="ads-top-href" inputmode="url" placeholder="https://..." />
+                </div>
+                <div class="field">
+                  <label for="ads-top-alt" data-i18n="ads.altText">Testo alternativo immagine</label>
+                  <input type="text" id="ads-top-alt" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="ads-top-html" data-i18n="ads.htmlSnippet">HTML personalizzato (opzionale)</label>
+                <textarea id="ads-top-html" rows="3" placeholder="&lt;ins class=&quot;adsbygoogle&quot; ...&gt;"></textarea>
+                <p class="field-hint" data-i18n="ads.htmlHint">Usa solo codice fidato. Ha priorità sull'immagine se compilato.</p>
+              </div>
+            </fieldset>
+
+            <fieldset class="ads-fieldset">
+              <legend data-i18n="ads.bottomTitle">Banner in basso (sopra la navigazione)</legend>
+              <div class="field field-checkbox">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="ads-bottom-enabled" />
+                  <span data-i18n="ads.bottomEnabled">Attiva banner in basso</span>
+                </label>
+              </div>
+              <div class="field">
+                <label for="ads-bottom-image" data-i18n="ads.imageUrl">URL immagine banner</label>
+                <input type="url" id="ads-bottom-image" inputmode="url" placeholder="https://..." />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="ads-bottom-href" data-i18n="ads.linkUrl">URL di destinazione (click)</label>
+                  <input type="url" id="ads-bottom-href" inputmode="url" placeholder="https://..." />
+                </div>
+                <div class="field">
+                  <label for="ads-bottom-alt" data-i18n="ads.altText">Testo alternativo immagine</label>
+                  <input type="text" id="ads-bottom-alt" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="ads-bottom-html" data-i18n="ads.htmlSnippet">HTML personalizzato (opzionale)</label>
+                <textarea id="ads-bottom-html" rows="3"></textarea>
+              </div>
+            </fieldset>
+
+            <p class="user-save-note hidden" id="ads-settings-saved-note" role="status" data-i18n="ads.saved">Banner salvati.</p>
+
+            <div class="user-form-actions">
+              <button type="submit" class="btn-primary btn-block" data-i18n="ads.save">Salva banner</button>
+            </div>
+          </form>
+        </section>
+
         <p class="privacy-footer-link">
           <a href="privacy-policy.html">Informativa privacy</a>
         </p>
@@ -258,6 +337,8 @@
     </div>
 
     <script src="i18n.js"></script>
+    <script src="ads-config.js"></script>
+    <script src="ads.js"></script>
     <script src="catalog-i18n.js"></script>
     <script src="users-db.js"></script>
     <script src="app.js"></script>

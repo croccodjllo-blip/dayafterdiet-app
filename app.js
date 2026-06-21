@@ -4623,6 +4623,9 @@ function initUserPage() {
   if (window.location.hash === "#obiettivi") {
     document.getElementById("user-settings-section")?.scrollIntoView({ behavior: "smooth" });
   }
+
+  initAdsSettingsForm();
+  populateAdsSettingsForm();
 }
 
 function syncLanguageFlagButtons() {
