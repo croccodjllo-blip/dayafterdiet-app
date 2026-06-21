@@ -1,0 +1,29 @@
+{
+  "id": "https://croccodjllo-blip.github.io/dayafterdiet/app/",
+  "name": "DaD — DayafterDiet",
+  "short_name": "DaD",
+  "description": "Traccia calorie, pasti e attività fisica ogni giorno.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0a2342",
+  "theme_color": "#0a2342",
+  "lang": "it",
+  "categories": ["health", "fitness", "lifestyle"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
