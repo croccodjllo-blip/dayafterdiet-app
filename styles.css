@@ -8,28 +8,47 @@
   --surface-elevated: rgba(255, 255, 255, 0.1);
   --text: #eef3fb;
   --text-muted: rgba(238, 243, 251, 0.68);
-  --accent: #00e676;
+  --brand-yellow: #ffd54f;
+  --brand-pink: #ff4081;
+  --brand-green: #00e676;
+  --brand-gradient: linear-gradient(135deg, var(--brand-yellow) 0%, var(--brand-pink) 52%, var(--brand-green) 100%);
+  --brand-gradient-soft: linear-gradient(
+    145deg,
+    rgba(255, 213, 79, 0.14) 0%,
+    rgba(255, 64, 129, 0.1) 42%,
+    rgba(0, 230, 118, 0.12) 100%
+  );
+  --brand-card-bg: linear-gradient(
+    165deg,
+    rgba(255, 213, 79, 0.09) 0%,
+    rgba(255, 64, 129, 0.07) 36%,
+    rgba(10, 35, 66, 0.72) 68%,
+    rgba(0, 230, 118, 0.08) 100%
+  );
+  --brand-card-border: rgba(255, 255, 255, 0.14);
+  --accent: var(--brand-green);
   --accent-dark: #69f0ae;
   --accent-light: #69f0ae;
   --accent-soft: rgba(0, 230, 118, 0.14);
   --accent-glow: rgba(0, 230, 118, 0.38);
-  --sport-orange: #ff5722;
-  --sport-orange-soft: rgba(255, 87, 34, 0.14);
+  --sport-orange: var(--brand-yellow);
+  --sport-orange-soft: rgba(255, 213, 79, 0.16);
   --header-bg: #0a2342;
   --header-text: #eef3fb;
   --header-muted: rgba(238, 243, 251, 0.68);
-  --protein: #42a5f5;
-  --protein-soft: rgba(66, 165, 245, 0.14);
-  --carbs: #ff9100;
-  --carbs-soft: rgba(255, 145, 0, 0.14);
-  --fat: #b388ff;
-  --fat-soft: rgba(179, 136, 255, 0.14);
-  --exercise: #00b0ff;
-  --exercise-light: #40c4ff;
-  --exercise-soft: rgba(0, 176, 255, 0.12);
-  --warning: #ff9100;
+  --protein: var(--brand-yellow);
+  --protein-soft: rgba(255, 213, 79, 0.16);
+  --carbs: var(--brand-pink);
+  --carbs-soft: rgba(255, 64, 129, 0.16);
+  --fat: var(--brand-green);
+  --fat-soft: rgba(0, 230, 118, 0.16);
+  --exercise: var(--brand-pink);
+  --exercise-light: #ff80ab;
+  --exercise-soft: rgba(255, 64, 129, 0.14);
+  --warning: var(--brand-yellow);
   --danger: #ff5252;
   --danger-soft: rgba(255, 82, 82, 0.14);
+  --green: var(--brand-green);
   --border: rgba(255, 255, 255, 0.14);
   --border-strong: rgba(255, 255, 255, 0.22);
   --shadow: none;
@@ -40,10 +59,10 @@
   --radius-xs: 6px;
   --font: "Barlow", system-ui, sans-serif;
   --font-display: "Barlow Condensed", system-ui, sans-serif;
-  --gradient-accent: linear-gradient(135deg, #00e676 0%, #00c853 55%, #00a152 100%);
-  --gradient-sport: linear-gradient(135deg, #00e676 0%, #00b0ff 50%, #ff5722 100%);
-  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
-  --gradient-week: linear-gradient(145deg, rgba(26, 68, 128, 0.25) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--brand-yellow) 0%, var(--brand-pink) 50%, var(--brand-green) 100%);
+  --gradient-sport: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-pink) 55%, var(--brand-yellow) 100%);
+  --gradient-surface: var(--brand-gradient-soft);
+  --gradient-week: linear-gradient(145deg, rgba(255, 64, 129, 0.12) 0%, rgba(10, 35, 66, 0.35) 45%, rgba(255, 213, 79, 0.08) 100%);
 }
 
 *,
@@ -58,7 +77,9 @@ body {
   font-family: var(--font);
   background-color: var(--navy-deep);
   background-image:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 176, 255, 0.18), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(255, 213, 79, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 8%, rgba(255, 64, 129, 0.12), transparent 52%),
+    radial-gradient(ellipse 55% 40% at 50% 100%, rgba(0, 230, 118, 0.1), transparent 50%),
     linear-gradient(180deg, #061528 0%, var(--navy-deep) 100%);
   color: var(--text);
   line-height: 1.5;
@@ -101,12 +122,24 @@ html.mobile-app button {
 }
 
 .weekly-collapse {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   position: relative;
+}
+
+.weekly-collapse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-collapse > summary {
@@ -194,8 +227,8 @@ html.mobile-app button {
 }
 
 .weekly-collapse-body {
-  padding: 16px 0 20px;
-  border-top: none;
+  padding: 16px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .weekly-nutrition-header.weekly-collapse-trigger,
@@ -205,16 +238,15 @@ html.mobile-app button {
 }
 
 .weekly-summary-card.weekly-collapse {
-  box-shadow: none;
   padding: 0;
 }
 
 .weekly-summary-card.weekly-collapse .weekly-collapse-body {
-  padding: 16px 0 20px;
+  padding: 16px 20px 20px;
 }
 
 .weekly-summary-card.weekly-collapse .weekly-collapse-trigger {
-  padding: 22px 0 18px;
+  padding: 18px 20px 16px;
 }
 
 .weekly-nutrition-card.weekly-collapse,
@@ -229,14 +261,14 @@ html.mobile-app button {
 .weekly-chart-card.weekly-collapse .weekly-collapse-body,
 .weekly-weight-card.weekly-collapse .weekly-collapse-body,
 .weekly-activity-card.weekly-collapse .weekly-collapse-body {
-  padding: 16px 0 18px;
+  padding: 16px 20px 18px;
 }
 
 .weekly-nutrition-card.weekly-collapse .weekly-collapse-trigger,
 .weekly-chart-card.weekly-collapse .weekly-collapse-trigger,
 .weekly-weight-card.weekly-collapse .weekly-collapse-trigger,
 .weekly-activity-card.weekly-collapse .weekly-collapse-trigger {
-  padding: 18px 0 16px;
+  padding: 18px 20px 16px;
 }
 
 .page-block {
@@ -275,8 +307,18 @@ html.mobile-app button {
   margin: 0 -20px 8px;
   padding: calc(20px + env(safe-area-inset-top, 0px)) 20px 16px;
   background: var(--header-bg);
-  border-bottom: 3px solid var(--exercise);
+  border-bottom: none;
   box-shadow: 0 8px 28px rgba(10, 35, 66, 0.32);
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--brand-gradient);
 }
 
 .header h1 {
@@ -425,10 +467,23 @@ html.mobile-app button {
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  background: var(--gradient-surface);
-  border: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
   border-radius: var(--radius);
-  box-shadow: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-banner-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .profile-banner.hidden {
@@ -605,9 +660,24 @@ body[data-page="reset-password"] .auth-error.auth-success {
 
 .profile-stat-card {
   padding: 12px;
-  background: var(--surface-muted);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-stat-card:nth-child(4n+1) {
+  border-color: rgba(255, 213, 79, 0.28);
+  background: rgba(255, 213, 79, 0.1);
+}
+
+.profile-stat-card:nth-child(4n+2) {
+  border-color: rgba(255, 64, 129, 0.28);
+  background: rgba(255, 64, 129, 0.1);
+}
+
+.profile-stat-card:nth-child(4n+3) {
+  border-color: rgba(0, 230, 118, 0.28);
+  background: rgba(0, 230, 118, 0.1);
 }
 
 .profile-stat-card span {
@@ -781,11 +851,24 @@ body[data-page="user"] .language-flag-btn.is-active {
 
 .login-card {
   width: 100%;
-  background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
   border-radius: calc(var(--radius) + 4px);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
   padding: clamp(28px, 4vw, 36px);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .login-card-simple {
@@ -795,10 +878,25 @@ body[data-page="user"] .language-flag-btn.is-active {
 body[data-page="login"] .login-card,
 body[data-page="register"] .login-card,
 body[data-page="reset-password"] .login-card {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  padding: clamp(24px, 4vw, 32px);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-page="login"] .login-card::before,
+body[data-page="register"] .login-card::before,
+body[data-page="reset-password"] .login-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
 }
 
 body[data-page="login"] .login-form-title,
@@ -1149,8 +1247,8 @@ body[data-page="login"] .login-auth-form .field label {
   padding: 10px 12px;
   font-size: 0.875rem;
   color: var(--text);
-  background: rgba(0, 176, 255, 0.08);
-  border-left: 3px solid var(--exercise);
+  background: rgba(255, 64, 129, 0.1);
+  border-left: 3px solid var(--brand-pink);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   line-height: 1.45;
 }
@@ -1162,9 +1260,22 @@ body[data-page="login"] .login-auth-form .field label {
 
 .tutorial-page-card {
   padding: 12px 14px;
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
   border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.tutorial-page-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .tutorial-page-card h3 {
@@ -1221,26 +1332,23 @@ body[data-page="tutorial"] .tutorial-toc,
 body[data-page="tutorial"] .tutorial-nav-item,
 body[data-page="tutorial"] .tutorial-page-card,
 body[data-page="tutorial"] .tutorial-icon {
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
 }
 
 body[data-page="tutorial"] .tutorial-nav-item-main {
-  background: rgba(0, 176, 255, 0.1);
+  background: rgba(255, 64, 129, 0.12);
+  border-color: rgba(255, 64, 129, 0.28);
 }
 
 body[data-page="tutorial"] .tutorial-tip {
-  background: rgba(0, 176, 255, 0.12);
-  border-left: 3px solid var(--exercise);
-}
-
-body[data-page="tutorial"] .tutorial-actions {
-  border-top-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 64, 129, 0.12);
+  border-left-color: var(--brand-pink);
 }
 
 body[data-page="tutorial"] .tutorial-steps-numbered li::before {
-  color: var(--exercise-light);
-  background: rgba(0, 176, 255, 0.15);
+  color: var(--brand-yellow);
+  background: rgba(255, 213, 79, 0.16);
 }
 
 @media (max-width: 480px) {
@@ -1401,11 +1509,24 @@ body[data-page="reset-password"] .auth-error {
 }
 
 .user-page-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 22px 0;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  padding: 20px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-page-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .user-section-head {
@@ -1457,8 +1578,13 @@ body[data-page="reset-password"] .auth-error {
 }
 
 .subscription-section {
-  border-color: rgba(0, 176, 255, 0.25);
-  background: linear-gradient(165deg, rgba(0, 176, 255, 0.06) 0%, var(--surface) 45%);
+  border-color: rgba(255, 64, 129, 0.35);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 64, 129, 0.12) 0%,
+    rgba(255, 213, 79, 0.08) 40%,
+    rgba(0, 230, 118, 0.06) 100%
+  );
 }
 
 .subscription-head {
@@ -1525,8 +1651,8 @@ body[data-page="reset-password"] .auth-error {
 }
 
 .subscription-plan-monthly {
-  border-color: rgba(0, 176, 255, 0.45);
-  box-shadow: 0 0 24px rgba(0, 176, 255, 0.12);
+  border-color: rgba(255, 64, 129, 0.45);
+  box-shadow: 0 0 24px rgba(255, 64, 129, 0.12);
 }
 
 .subscription-plan-badge {
@@ -1733,16 +1859,26 @@ h2 {
 }
 
 .summary-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
-.summary-card::before,
+.summary-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+}
+
 .summary-card::after {
   display: none;
 }
@@ -1816,8 +1952,8 @@ h2 {
   justify-content: space-between;
   align-items: baseline;
   padding: 10px 14px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   box-shadow: none;
 }
@@ -1888,17 +2024,24 @@ h2 {
 }
 
 .tomorrow-panel {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .tomorrow-panel::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .tomorrow-header h2 {
@@ -1931,8 +2074,8 @@ h2 {
   text-align: center;
   padding: 12px 16px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
+  background: rgba(255, 64, 129, 0.14);
+  border: 1px solid rgba(255, 64, 129, 0.28);
   box-shadow: none;
 }
 
@@ -1943,7 +2086,7 @@ h2 {
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0.02em;
-  color: var(--exercise-light);
+  color: var(--brand-pink);
 }
 
 .tomorrow-target-label {
@@ -2036,17 +2179,24 @@ h2 {
 
 .today-context-card {
   margin-bottom: 0;
-  padding: 18px 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  padding: 20px 18px;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .today-context-card::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .today-context-title {
@@ -2072,10 +2222,25 @@ h2 {
 .today-context-stat {
   text-align: center;
   padding: 12px 10px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   box-shadow: none;
+}
+
+.today-context-stat:nth-child(1) {
+  border-color: rgba(255, 213, 79, 0.28);
+  background: rgba(255, 213, 79, 0.1);
+}
+
+.today-context-stat:nth-child(2) {
+  border-color: rgba(255, 64, 129, 0.28);
+  background: rgba(255, 64, 129, 0.1);
+}
+
+.today-context-stat:nth-child(3) {
+  border-color: rgba(0, 230, 118, 0.28);
+  background: rgba(0, 230, 118, 0.1);
 }
 
 .today-context-label {
@@ -2107,11 +2272,25 @@ h2 {
 
 .today-body-panel,
 .today-weight-panel {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 18px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.today-body-panel::before,
+.today-weight-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .today-body-header,
@@ -2317,9 +2496,19 @@ h2 {
   gap: 8px;
   padding: 10px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   background: var(--header-bg);
-  border-top: 2px solid rgba(0, 176, 255, 0.45);
+  border-top: none;
   box-shadow: 0 -12px 40px rgba(10, 35, 66, 0.38);
   z-index: 20;
+}
+
+.bottom-nav::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: var(--brand-gradient);
 }
 
 .bottom-nav-3 {
@@ -2413,10 +2602,10 @@ h2 {
 }
 
 .bottom-nav-link.active {
-  color: var(--exercise-light);
-  background: rgba(0, 176, 255, 0.14);
-  border-color: rgba(0, 176, 255, 0.45);
-  box-shadow: 0 0 16px rgba(0, 176, 255, 0.25);
+  color: var(--brand-yellow);
+  background: rgba(255, 64, 129, 0.16);
+  border-color: rgba(255, 64, 129, 0.45);
+  box-shadow: 0 0 16px rgba(255, 64, 129, 0.28);
 }
 
 .bottom-nav-icon,
@@ -2486,15 +2675,29 @@ h2 {
   padding: 16px 14px;
   text-decoration: none;
   color: inherit;
-  background: var(--surface-muted);
-  border: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
   border-radius: var(--radius);
-  box-shadow: none;
-  transition: background 0.18s ease, transform 0.12s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition: background 0.18s ease, transform 0.12s ease, border-color 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.overview-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .overview-card:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 64, 129, 0.1);
+  border-color: rgba(255, 64, 129, 0.35);
   transform: translateY(-1px);
 }
 
@@ -2536,22 +2739,30 @@ h2 {
 .macros-panel {
   margin-top: 20px;
   padding-top: 20px;
-  border-top: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .weekly-summary-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0 20px;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .weekly-summary-card::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-summary-header h2 {
@@ -2582,15 +2793,15 @@ h2 {
   flex-direction: column;
   gap: 4px;
   padding: 14px 12px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   box-shadow: none;
   min-width: 0;
 }
 
 .weekly-kpi-featured {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 64, 129, 0.14);
 }
 
 .weekly-kpi-featured .weekly-kpi-label {
@@ -2598,7 +2809,7 @@ h2 {
 }
 
 .weekly-kpi-featured strong {
-  color: var(--exercise-light);
+  color: var(--brand-pink);
   font-size: 1.375rem;
 }
 
@@ -2619,8 +2830,8 @@ h2 {
   justify-content: space-between;
   gap: 8px;
   padding: 10px 14px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   font-size: 0.8125rem;
 }
@@ -2648,28 +2859,36 @@ h2 {
 }
 
 .weekly-weight-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0 18px;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .weekly-weight-card::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-weight-icon {
-  background: rgba(94, 53, 177, 0.12);
-  color: #5e35b1;
+  background: rgba(255, 213, 79, 0.16);
+  color: var(--brand-yellow);
   border: none;
 }
 
 .weekly-kpi-weight {
-  background: rgba(94, 53, 177, 0.12);
+  background: rgba(255, 213, 79, 0.12);
 }
 
 .weekly-kpi-weight .weekly-kpi-label {
@@ -2677,7 +2896,7 @@ h2 {
 }
 
 .weekly-kpi-weight strong {
-  color: #5e35b1;
+  color: var(--brand-yellow);
 }
 
 .weekly-weight-kpi {
@@ -2686,11 +2905,24 @@ h2 {
 
 .totals-hero-card {
   margin-bottom: 14px;
-  padding: 16px 0;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  padding: 20px 18px;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.totals-hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .totals-hero-head {
@@ -2708,8 +2940,9 @@ h2 {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #5e35b1;
-  background: rgba(126, 87, 194, 0.12);
+  color: var(--brand-yellow);
+  background: rgba(255, 213, 79, 0.14);
+  border: 1px solid rgba(255, 213, 79, 0.28);
   border-radius: 999px;
 }
 
@@ -2747,8 +2980,8 @@ h2 {
   gap: 12px;
   margin-bottom: 14px;
   padding: 10px 12px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 213, 79, 0.1);
+  border: 1px solid rgba(255, 213, 79, 0.24);
   border-radius: var(--radius-sm);
 }
 
@@ -2779,29 +3012,29 @@ h2 {
 }
 
 .chart-weight-line {
-  filter: drop-shadow(0 1px 2px rgba(94, 53, 177, 0.25));
+  filter: drop-shadow(0 1px 2px rgba(255, 213, 79, 0.25));
 }
 
 .chart-weight-point {
   fill: #fff;
-  stroke: #7e57c2;
+  stroke: var(--brand-yellow);
   stroke-width: 2.5;
 }
 
 .chart-weight-point-today {
-  fill: #7e57c2;
-  stroke: #4527a0;
+  fill: var(--brand-yellow);
+  stroke: #f9a825;
   stroke-width: 2;
 }
 
 .chart-weight-value {
-  fill: #5e35b1;
+  fill: var(--brand-yellow);
   font-weight: 700;
 }
 
 .weekly-body-measures-section {
   padding-top: 16px;
-  border-top: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .weekly-body-measures-summary {
@@ -2952,7 +3185,7 @@ h2 {
 }
 
 .weekly-body-measure-day-today .weekly-body-measure-day-label {
-  color: #5e35b1;
+  color: var(--brand-yellow);
 }
 
 .weekly-body-measure-day-bar {
@@ -2978,25 +3211,53 @@ h2 {
 }
 
 .weekly-body-measure-day-today .weekly-body-measure-day-val {
-  color: #5e35b1;
+  color: var(--brand-yellow);
 }
 
 .weekly-chart-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0 18px;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.weekly-chart-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-nutrition-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0 18px;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.weekly-nutrition-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-nutrition-header {
@@ -3040,7 +3301,7 @@ h2 {
 
 .weekly-micro-panel {
   padding-top: 16px;
-  border-top: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .micro-name {
@@ -3070,28 +3331,36 @@ h2 {
 }
 
 .weekly-activity-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 22px 0 18px;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
   margin-bottom: 0;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .weekly-activity-card::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weekly-activity-icon {
-  background: rgba(0, 176, 255, 0.12);
-  color: var(--exercise-light);
+  background: rgba(255, 64, 129, 0.14);
+  color: var(--brand-pink);
   border: none;
 }
 
 .weekly-kpi-sport {
-  background: rgba(0, 176, 255, 0.12);
+  background: rgba(255, 64, 129, 0.12);
 }
 
 .weekly-kpi-sport .weekly-kpi-label {
@@ -3099,7 +3368,7 @@ h2 {
 }
 
 .weekly-kpi-sport strong {
-  color: var(--exercise-light);
+  color: var(--brand-pink);
 }
 
 .weekly-activity-kpi {
@@ -3486,8 +3755,8 @@ h2 {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #5e35b1;
-  background: rgba(126, 87, 194, 0.12);
+  color: var(--brand-pink);
+  background: rgba(255, 64, 129, 0.14);
   border-radius: 999px;
   vertical-align: middle;
 }
@@ -3649,11 +3918,24 @@ h2 {
 }
 
 .work-toggle-panel {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 18px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.work-toggle-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .work-toggle-header {
@@ -3710,15 +3992,15 @@ h2 {
 
 .work-toggle-pill input:checked + span {
   background: var(--sport-orange-soft);
-  border-color: var(--sport-orange);
-  color: #bf360c;
+  border-color: var(--brand-yellow);
+  color: #f9a825;
   font-weight: 700;
 }
 
 .work-toggle-meta {
   margin: 12px 0 0;
   font-size: 0.875rem;
-  color: var(--sport-orange);
+  color: var(--brand-yellow);
   font-weight: 600;
 }
 
@@ -3733,17 +4015,43 @@ h2 {
 }
 
 .activity-add-panel {
-  background: transparent;
-  border: none;
-  padding: 20px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-add-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .food-add-panel {
-  background: transparent;
-  border: none;
-  padding: 20px 0;
-  box-shadow: none;
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
+  padding: 20px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.food-add-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .activity-quick-picker {
@@ -3786,8 +4094,8 @@ h2 {
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: var(--surface-muted);
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
   box-shadow: none;
   animation: slideIn 0.25s ease;
@@ -4167,17 +4475,17 @@ h2 {
   font: inherit;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--exercise);
-  background: rgba(0, 176, 255, 0.1);
-  border: 1px dashed rgba(0, 176, 255, 0.45);
+  color: var(--brand-pink);
+  background: rgba(255, 64, 129, 0.1);
+  border: 1px dashed rgba(255, 64, 129, 0.45);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
 
 .btn-scan-barcode:hover {
-  background: rgba(0, 176, 255, 0.16);
-  border-color: rgba(0, 176, 255, 0.65);
+  background: rgba(255, 64, 129, 0.16);
+  border-color: rgba(255, 64, 129, 0.65);
 }
 
 .food-scanner-modal {
@@ -4210,10 +4518,21 @@ body.food-scanner-open {
   max-height: min(92vh, 720px);
   overflow: auto;
   padding: 18px 16px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--brand-card-bg);
+  border: 1px solid var(--brand-card-border);
   border-radius: calc(var(--radius) + 2px);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.food-scanner-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  pointer-events: none;
 }
 
 .food-scanner-head {
@@ -4961,103 +5280,66 @@ select:focus {
   }
 }
 
-/* Schede senza cornice — sfondo blu scuro integrato */
-.weekly-collapse,
-.weekly-summary-card,
-.profile-banner-inner,
-.summary-card,
-.user-page-card,
-.today-body-panel,
-.today-weight-panel,
-.today-context-card,
-.today-context-stat,
-.tomorrow-panel,
-.work-toggle-panel,
-.activity-add-panel,
-.food-add-panel,
-.subscription-section,
-.subscription-plan,
-.profile-stat-card,
+body[data-page="tutorial"] .tutorial-actions {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Schede interne — accenti palette logo */
 .profile-stat-pill,
 .profile-measurement-pill,
-.meal-item,
-.stat,
-.macros-panel,
-.weekly-micro-panel,
-.food-scanner-panel,
-.login-card,
-.tutorial-toc,
-.tutorial-nav-item,
-.tutorial-page-card,
-.tutorial-icon,
 .food-quick-item,
 .activity-quick-item,
 .tomorrow-meal,
-.totals-hero-card,
-.totals-section.weekly-collapse,
-.weekly-kpi,
-.weekly-kpi-featured,
-.weekly-metric-pill,
-.weekly-message,
-.weekly-activity-row,
+.tomorrow-macro-chip,
+.tomorrow-tip,
+.subscription-plan,
 .weekly-body-measure-pill,
 .weekly-body-measure-block,
 .weekly-body-measure-line-block,
-.week-start-control,
-.weekly-chart-wrap,
-.weekly-chart-icon,
-.weekly-weight-card,
-.weekly-chart-card,
-.weekly-nutrition-card,
-.weekly-activity-card,
+.weekly-activity-row,
 .weekly-collapse-chevron,
-.overview-card,
-.tomorrow-target-badge,
-.tomorrow-macro-chip,
-.tomorrow-tip,
 .section-count {
-  border: none !important;
-  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.summary-card::before,
-.tomorrow-panel::before,
-.today-context-card::before,
-.weekly-summary-card::before,
-.weekly-weight-card::before,
-.weekly-activity-card::before {
-  display: none;
+.weekly-collapse-chevron {
+  background: rgba(255, 64, 129, 0.12);
+  border-color: rgba(255, 64, 129, 0.24);
 }
 
-.weekly-collapse-body,
-.weekly-micro-panel,
-.weekly-activity-days-section,
-.weekly-body-measures-section {
-  border-top: none !important;
+.section-count {
+  background: rgba(0, 230, 118, 0.12);
+  border-color: rgba(0, 230, 118, 0.24);
+  color: var(--brand-green);
 }
 
 body[data-page="user"] .user-page-card + .user-page-card {
-  padding-top: 8px;
-  border-top: none;
+  margin-top: 0;
 }
 
 body[data-page="user"] .profile-measurements-block {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 body[data-page="user"] .body-measurements-fieldset {
-  border: none;
-  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px;
   margin: 0;
 }
 
 body[data-page="user"] .subscription-active,
 body[data-page="user"] .subscription-status-badge {
-  border: none;
+  border: 1px solid rgba(0, 230, 118, 0.35);
 }
 
 body[data-page="user"] .subscription-plan-monthly {
-  box-shadow: none;
+  box-shadow: 0 8px 24px rgba(255, 64, 129, 0.15);
+  border-color: rgba(255, 64, 129, 0.28);
 }
 
 .profile-payment-card {
@@ -5175,7 +5457,7 @@ body[data-page="user"] .user-form select option {
 body[data-page="payment"] .user-page-card,
 body[data-page="payment"] .profile-payment-row,
 body[data-page="payment"] .subscription-status-badge {
-  border: none;
+  border-color: var(--brand-card-border);
 }
 
 .profile-payment-page-link {
