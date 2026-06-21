@@ -53,9 +53,3 @@ Poi ricompila dall'IDE o con `npm run mobile:run`.
 ## Online
 
 https://croccodjllo-blip.github.io/dayafterdiet-app/
-
-## Repository
-
-https://github.com/croccodjllo-blip/dayafterdiet-app
-
-Sito di presentazione (landing): https://github.com/croccodjllo-blip/dayafterdiet
