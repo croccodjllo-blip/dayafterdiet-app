@@ -1,0 +1,19 @@
+{
+  "appId": "com.dayafterdiet.app",
+  "appName": "DaD",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0a2342",
+      "showSpinner": false
+    }
+  }
+}

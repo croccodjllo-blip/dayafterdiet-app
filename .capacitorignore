@@ -1,0 +1,8 @@
+node_modules/
+android/
+ios/
+.git/
+package.json
+package-lock.json
+capacitor.config.json
+README.md

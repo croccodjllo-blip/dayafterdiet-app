@@ -1,0 +1,24 @@
+{
+  "name": "dayafterdiet-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DaD — Diario alimentare e fitness (web + mobile)",
+  "scripts": {
+    "build:www": "node scripts/copy-www.js",
+    "cap:sync": "npm run build:www && cap sync",
+    "cap:android": "cap open android",
+    "mobile:sync": "npm run build:www && cap sync android",
+    "mobile:run": "npm run build:www && cap run android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
+    "@capacitor/core": "^6.2.0",
+    "@capacitor/keyboard": "^6.0.3",
+    "@capacitor/splash-screen": "^6.0.3",
+    "@capacitor/status-bar": "^6.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.2.0"
+  }
+}
